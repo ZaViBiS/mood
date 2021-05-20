@@ -130,3 +130,5 @@ dmypy.json
 
 # my config
 config.py
+data.json
+test.py
