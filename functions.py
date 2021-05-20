@@ -4,7 +4,6 @@ import datetime
 import threading
 import telebot
 from config import *
-# from keyboa import Keyboa
 from telebot import types
 
 
@@ -126,8 +125,9 @@ def timer():
     while True:
         now = datetime.datetime.now()
 
-
-        if now.minute < 1 and now.hour < 22 and now.hour > 9 : 
+        # Да, Капэць
+        # Если менута = 0 и часы не равны 1-9
+        if now.minute < 1 and now.hour != 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9 : 
             timeToTearAndThrow()
             time.sleep(3480)
         
