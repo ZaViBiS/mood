@@ -51,7 +51,8 @@ def processingTextResponses(message):
     # message.text
 
     now = datetime.datetime.now()
-    time = str(now.hour) + ':00'
+    # time = str(now.month) + '-' + str(now.day) + ' ' + str(now.hour) + ':' + str(now.minute)
+    time = '{0}-{1} {2}:{3}'.format(now.month, now.day, now.hour, now.minute)
 
     addData(str(message.chat.id), time, message.text)
 
