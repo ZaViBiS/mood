@@ -4,17 +4,15 @@ from functions import jsonReader
 
 
 def jsonToCsv(name):
+    pngName = str(name) + '.png'
+    
     data = jsonReader()[name]
+    data = pd.DataFrame(data, columns = ['Time', 'Appraisal'])
 
-    frame = pd.DataFrame(data, columns = ['Time', 'Hello'])
-
-    frame.to_csv('my_csv_export.csv', index=False) # экспортируем в файл
-
-
-def BuildingAGraphFromCsv():
-    data = pd.read_csv("my_csv_export.csv")
 
     fig = plt.figure()
-    plt.plot(data['Time'], data['Hello'])
+    plt.plot(data['Time'], data['Appraisal'])
     fig.autofmt_xdate()
-    plt.savefig('line_plot.png') 
+    plt.savefig(pngName)
+
+    return pngName

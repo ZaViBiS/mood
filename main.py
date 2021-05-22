@@ -1,4 +1,3 @@
-from telebot.types import ReplyKeyboardMarkup, Update
 from functions import *
 from config import *
 from Csv import *
@@ -26,15 +25,13 @@ def start(message):
 @bot.message_handler(commands=['schedule'])
 def sendingSchedule(message):
 
-    jsonToCsv(str(message.chat.id))
-    BuildingAGraphFromCsv()
+    pngName = jsonToCsv(str(message.chat.id))
 
-    image = open('line_plot.png', 'rb')
+    image = open(pngName, 'rb')
 
     bot.send_photo(message.chat.id, image)
 
-    os.remove('line_plot.png')
-    
+    os.remove(pngName)
 # --------------------------------------------------------------------------------------------------------
 
 # --------------------------------------------------------------------------------------------------------
@@ -42,6 +39,18 @@ def sendingSchedule(message):
 @bot.message_handler(commands=['teststart'])
 def testStart(message):
     timeToTearAndThrow()
+# --------------------------------------------------------------------------------------------------------
+
+# --------------------------------------------------------------------------------------------------------
+
+@bot.message_handler(commands=['NumberOfUsers'])
+def numberOfUsers(message):
+    data = jsonReader()
+
+    if message.chat.id == 538024314:
+        bot.send_message(message.chat.id, len(data))
+    else:
+        bot.send_message(message.chat.id, 'Вы не можете получать эти данные!')
 # --------------------------------------------------------------------------------------------------------
 
 # --------------------------------------------------------------------------------------------------------
@@ -56,7 +65,7 @@ def processingTextResponses(message):
 
     addData(str(message.chat.id), time, message.text)
 
-    bot.send_message(message.chat.id, 'Ваш ответ записан', reply_markup = None)
+    bot.send_message(message.chat.id, 'Ваш ответ записан')
 # --------------------------------------------------------------------------------------------------------
 
 
