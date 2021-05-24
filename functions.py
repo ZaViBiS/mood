@@ -103,9 +103,11 @@ def timer():
 
         # Да, Капэць
         # Если минута = 0 и часы не равны 1-9
-        if now.minute < 1 and now.hour != 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9: 
-            timeToTearAndThrow()
-            time.sleep(3480)
+        if now.hour != 1 or 2 or 3 or 4 or 5 or 7 or 8 or 9:
+            if now.minute == 0: 
+                print(now.minute)
+                timeToTearAndThrow()
+                time.sleep(3480)
         
         time.sleep(5)
             

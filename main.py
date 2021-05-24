@@ -9,7 +9,7 @@ import os
 
 bot = telebot.TeleBot(TOKEN)
 
-threading.Thread(target=timer).start() # запуск в фоне цункции проверки
+threading.Thread(target = timer).start() # запуск в фоне функции проверки
 
 
 # --------------------------------------------------------------------------------------------------------
@@ -24,13 +24,9 @@ def start(message):
 
 @bot.message_handler(commands=['schedule'])
 def sendingSchedule(message):
-
     pngName = jsonToCsv(str(message.chat.id))
-
     image = open(pngName, 'rb')
-
     bot.send_photo(message.chat.id, image)
-
     os.remove(pngName)
 # --------------------------------------------------------------------------------------------------------
 
