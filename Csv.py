@@ -9,15 +9,14 @@ def jsonToCsv(name, utilizerName):
     data = jsonReader()[name]
     data = pd.DataFrame(data, columns = ['Time', 'Appraisal'])
 
-    
+    fig = plt.figure()
+
     plt.ylim(1,10) # ограничение оси y (1, 10)
     plt.title(utilizerName) # Заголовок
     plt.grid() # Сетка
     plt.plot(data['Time'], data['Appraisal'])
 
-    fig = plt.figure()
     fig.autofmt_xdate()
-
     plt.savefig(pngName)
 
     return pngName
