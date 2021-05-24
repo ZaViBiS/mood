@@ -70,9 +70,9 @@ def processingTextResponses(message):
 @bot.message_handler(commands=['stop'])
 def stop(message):
     if removeUtilizer(message.chat.id):
-        message.send_message(message.chat.id, successfulDeletion)
+        bot.send_message(message.chat.id, successfulDeletion)
     else:
-        message.send_message(message.chat.id, unsuccessfulDeletion)
+        bot.send_message(message.chat.id, unsuccessfulDeletion)
 # --------------------------------------------------------------------------------------------------------
 
 
