@@ -1,3 +1,4 @@
+from telebot.apihelper import send_message
 from functions import *
 from config import *
 from Csv import *
@@ -57,11 +58,21 @@ def processingTextResponses(message):
 
     now = datetime.datetime.now()
     # time = str(now.month) + '-' + str(now.day) + ' ' + str(now.hour) + ':' + str(now.minute)
-    time = '{0}-{1} {2}:{3}'.format(now.month, now.day, now.hour, now.minute)
+    time = '{0}-{1} {2}:{3}'.format(now.month, now.day, now.hour, beaMin(now.minute))
 
     addData(str(message.chat.id), time, message.text)
 
     bot.send_message(message.chat.id, 'Ваш ответ записан')
+# --------------------------------------------------------------------------------------------------------
+
+# --------------------------------------------------------------------------------------------------------
+
+@bot.message_handler(commands=['stop'])
+def stop(message):
+    if removeUtilizer(message.chat.id):
+        message.send_message(message.chat.id, successfulDeletion)
+    else:
+        message.send_message(message.chat.id, unsuccessfulDeletion)
 # --------------------------------------------------------------------------------------------------------
 
 

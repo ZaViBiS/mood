@@ -67,7 +67,6 @@ def addData(name, time, appraisal):
             jsonWriter(data)
 
     else:
-
         utilizer.append(newData)
         jsonWriter(data)
 
@@ -116,4 +115,18 @@ def timer():
 # beautiful Minutes
 beaMin = lambda minute : '0' + str(minute) if minute < 10 else minute 
 
+# --------------------------------------------------------------------------------------------------------
+
+# --------------------------------------------------------------------------------------------------------
+
+def removeUtilizer(utilizer):
+    utilizer = str(utilizer)
+    data = jsonReader()
+    
+    try:
+        del data[utilizer]
+        return True
+
+    except:
+        return False
 # --------------------------------------------------------------------------------------------------------
