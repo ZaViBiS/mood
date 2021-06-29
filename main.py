@@ -1,13 +1,17 @@
+import datetime
+import threading
+import logging
+import os
+
+import telebot
+
 from functions import *
 from config import *
 from Csv import *
-import telebot
-import datetime
-import threading 
-import os
 
 
 bot = telebot.TeleBot(TOKEN)
+logging.basicConfig(level=logging.INFO)
 
 threading.Thread(target = timer).start() # запуск в фоне функции проверки
 
