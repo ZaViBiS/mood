@@ -90,21 +90,24 @@ def timeToTearAndThrow(): # Вопросы для пользователей
 
     for chatId in data:
         askaQuestion(chatId)
+# --------------------------------------------------------------------------------
 
+def not_equal(hour):
+    for x in range(10):
+        if (x) == hour:
+            return False
+    return True
 # --------------------------------------------------------------------------------
 
 # Если ровно час (9:00, 12:00...22:00), то активирует функцию "опроса" (timeToTearAndThrow)
 def timer():
     while True:
         now = datetime.datetime.now()
-
-        # Да, Капэць
-        # Если минута = 0 и часы не равны 1-9
-        if now.hour != 1 or 2 or 3 or 4 or 5 or 7 or 8 or 9:
-            if now.minute == 0: 
-                print(now.minute)
-                timeToTearAndThrow()
-                time.sleep(3480)
+        # Если минута = 0 и часы не равны 0-9
+        if not_equal(now.hour) and now.minute == 0:
+            print(now.minute)
+            timeToTearAndThrow()
+            time.sleep(3480)
         
         time.sleep(5)
             
